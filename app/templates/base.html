@@ -1,0 +1,124 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Memoranda</title>
+    <style>
+        .loader_bg{
+          position: fixed;
+          z-index: 999999;
+          background: #152b3c;
+          width:100%;
+          height:100%;
+          text-align: center;
+         }
+
+         .loader{
+            border:0 solid transparent;
+            border-radius: 50%;
+            width:150px;
+            height:150px;
+            position: absolute;
+            top:calc(50vh - 75px);
+            left:calc(50vw - 75px);
+            text-align: center;
+            color:#FFD43B;
+            
+         }
+         .loader::before , .loader:after{
+              content: '';
+              border:1em solid #FFD43B;
+              border-radius: 50%;
+              width:inherit;
+              height:inherit;
+              position:absolute;
+              top:0;
+              left:0;
+              animation: loader 2s linear infinite;
+              opacity:0;
+         }
+         .loader:before{
+             animation-delay: 0.5s;
+        }
+        @keyframes loader {
+          0%{
+             transform: scale(0);
+             opacity: 0;
+          }
+          50%{
+             opacity: 1;
+          }
+          100%{
+             transform: scale(1);
+             opacity: 0.5;
+          }
+
+        }
+    </style>
+  </head>
+  <body >
+   <div class="loader_bg">
+       <div class="loader">
+         <br><br><br><br><br>
+         <br><br><br>
+           <h5 style="font-family: cursive;">📋 നemoranda</h5>
+           ©2021 Gourav Yadav
+       </div>
+   </div>
+<!-- navbar start -->
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #172E1A;color: #97B37A;">
+    
+    <a style="color: #D2D2D2;font-family:'Times New Roman', Times, serif" class="navbar-brand" href="/"><h3>📝നemoranda</h3></a>
+    <button class="navbar-toggler bg-success" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+
+        {% if request.user.is_authenticated %}
+           <li class="nav-item">
+               <a style="color: #D2D2D2;" class="nav-link" href="/logout">Logout⇨</a>
+           </li>
+        {% else %}
+           <li class="nav-item">
+               <a style="color: #D2D2D2;" class="nav-link" href="/login">Login</a>
+           </li>
+           <li class="nav-item">
+               <a style="color: #D2D2D2;"class="nav-link" href="/signup">SignUp</a>
+           </li>
+        {% endif %}
+        
+      </ul>
+    </div>
+  </nav>
+  <!-- navbar ends -->
+ 
+  <!-- changing content starts-->
+       <div>
+           {% block content %}
+           
+           {% endblock %}
+       </div>
+  <!-- changing content ends -->
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <!-- for preloader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        setTimeout(function(){
+            $('.loader_bg').fadeToggle();
+        }, 1000);
+    </script>
+    
+  </body>
+</html>
