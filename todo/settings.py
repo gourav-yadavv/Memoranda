@@ -14,7 +14,7 @@ SECRET_KEY = 'q)4g!*obsp^+9u$61)+x5e^=--8%%rvegq@7ar-ju1%uinecwu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','memorandaapp.herokuapp.com']
 
 
 # Application definition
